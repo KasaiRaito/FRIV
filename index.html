@@ -1,23 +1,69 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mini Game Hub</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Game Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #222;
+      color: white;
+    }
+    #menu {
+      margin: 20px;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    canvas {
+      background-color: #333;
+      display: block;
+      margin: 0 auto;
+    }
+    #sudokuContainer table {
+      margin: 0 auto;
+      border-collapse: collapse;
+    }
+    #sudokuContainer td {
+      border: 1px solid black;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+    }
+    #sudokuContainer input {
+      width: 38px;
+      height: 38px;
+      text-align: center;
+      font-size: 16px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Mini Game Hub 🎮</h1>
+
+  <h1>🎮 My Game Hub 🎮</h1>
 
   <div id="menu">
-    <button onclick="startCatchTheBall()">Catch the Ball</button>
-    <button onclick="alert('Próximamente!')">Juego 2</button>
-    <button onclick="alert('Próximamente!')">Juego 3</button>
+    <button onclick="startCatchTheBallHub()">Catch the Ball</button>
+    <button onclick="startSudokuHub()">Sudoku</button>
   </div>
 
-  <canvas id="gameCanvas" style="display:none;"></canvas>
+  <div id="gameContainer">
+    <!-- Catch the Ball Canvas -->
+    <canvas id="gameCanvas" style="display:none;"></canvas>
 
-  <script src="js/main.js"></script>
-  <script src="js/game.js"></script>
+    <!-- Sudoku Container -->
+    <div id="sudokuContainer" style="display:none;"></div>
+  </div>
+
+  <!-- JS Files -->
+  <script src="js/catchTheBall.js"></script>
+  <script src="js/sudoku.js"></script>
+  <script src="js/hub.js"></script>
+
 </body>
 </html>

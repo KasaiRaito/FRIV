@@ -40,23 +40,26 @@ function initCatchTheBall() {
       balls.push({ x, y:0, radius, dy:ballSpeed, img });
     }
   
-    // Input
-    document.addEventListener("keydown", (e) => {
-        if (!gameStarted) 
-        {
-            gameStarted = true; // Start game with any key
-        } 
-        else if (gameOver) 
-        {
-            restartGame(); // Reset game with any key
-        }
-  
-      if (gameStarted) {
-        if (gameOver && e.key === "Enter") restartGame();
-        if (e.key === "ArrowLeft" || e.key === "a") player.dx = -player.speed;
-        if (e.key === "ArrowRight" || e.key === "d") player.dx = player.speed;
-      }
-    });
+   document.addEventListener("keydown", (e) => {
+    if (!gameStarted) {
+        gameStarted = true; // Start game with any key
+    } else if (gameOver && e.code === "Space") {
+        restartGame(); // Restart only with Spacebar
+    }
+
+    // Player movement (works during the game, not at start screen or game over)
+    if (gameStarted && !gameOver) {
+        if (e.key.toLowerCase() === "a" || e.key === "ArrowLeft") player.dx = -player.speed;
+        if (e.key.toLowerCase() === "d" || e.key === "ArrowRight") player.dx = player.speed;
+    }
+});
+
+document.addEventListener("keyup", (e) => {
+    if (e.key.toLowerCase() === "a" || e.key === "ArrowLeft" || e.key.toLowerCase() === "d" || e.key === "ArrowRight") {
+        player.dx = 0;
+    }
+});
+
   
     document.addEventListener("keyup", (e) => {
       if (gameStarted && (e.key === "ArrowLeft" || e.key === "ArrowRight" || e.key === "a" || e.key === "d")) player.dx = 0;
@@ -98,7 +101,7 @@ function initCatchTheBall() {
       ctx.fillText("GAME OVER",canvas.width/2-120,canvas.height/2-20);
       ctx.font="20px Arial";
       ctx.fillText("Final Score: "+score,canvas.width/2-90,canvas.height/2+20);
-      ctx.fillText("Press ANY KEY to restart",canvas.width/2-140,canvas.height/2+60);
+      ctx.fillText("Press SPACE to restart",canvas.width/2-140,canvas.height/2+60);
     }
   
     function drawStartScreen() {
