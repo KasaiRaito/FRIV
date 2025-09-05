@@ -24,13 +24,14 @@
       background-color: #333;
       display: block;
       margin: 0 auto;
+      border: 2px solid white;
     }
     #sudokuContainer table {
       margin: 0 auto;
       border-collapse: collapse;
     }
     #sudokuContainer td {
-      border: 1px solid black;
+      border: 1px solid white;
       width: 40px;
       height: 40px;
       text-align: center;
@@ -40,6 +41,16 @@
       height: 38px;
       text-align: center;
       font-size: 16px;
+      border: none;
+    }
+    #wordleContainer {
+      margin-top: 20px;
+    }
+    #wordleContainer input {
+      border: 2px solid white;
+      border-radius: 5px;
+      background: #111;
+      color: white;
     }
   </style>
 </head>
@@ -50,6 +61,8 @@
   <div id="menu">
     <button onclick="startCatchTheBallHub()">Catch the Ball</button>
     <button onclick="startSudokuHub()">Sudoku</button>
+    <button onclick="startWordleHub()">Wordle</button>
+    <button onclick="startSpellingBeeHub()">Spelling Bee</button>
   </div>
 
   <div id="gameContainer">
@@ -58,12 +71,21 @@
 
     <!-- Sudoku Container -->
     <div id="sudokuContainer" style="display:none;"></div>
+
+    <!-- Wordle Container -->
+    <div id="wordleContainer" style="display:none;"></div>
+
+    <!-- SpellingBee Container -->
+    <div id="spellingBeeContainer" style="display: none;"></div>
   </div>
 
   <!-- JS Files -->
   <script src="js/catchTheBall.js"></script>
   <script src="js/sudoku.js"></script>
+  <script src="js/wordle.js"></script>
+  <script src="js/spellingBee.js"></script>
   <script src="js/hub.js"></script>
+
 
 </body>
 </html>
